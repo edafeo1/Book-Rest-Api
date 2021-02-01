@@ -3,6 +3,9 @@ import './App.css';
 
 import {Container, Row, Col, Jumbotron} from 'react-bootstrap';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Welcome from './components/Welcome';
+import Footer from './components/Footer';
+import Navigation from './components/Navigation';
 
 
 
@@ -15,17 +18,19 @@ export default function App() {
 
   return (
     <Router>
-
+      <Navigation/>
         <Container>
             <Row>
                 <Col lg={12} className={"margin-top"}>
-                    <Jumbotron className="bg-dark text-white">
-                      <h1>Hello world</h1>
-                      <p>Heloooo</p>
-                    </Jumbotron>
+                    <Switch>
+                        <Route path="/" exact component={() => <Welcome heading={heading} quote={quote} footer={footer}/>}/>
+                        
+                    </Switch>
                 </Col>
             </Row>
         </Container>
+        <Footer/>
+        
        
     </Router>
   );
