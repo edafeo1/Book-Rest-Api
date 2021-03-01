@@ -18,15 +18,18 @@ public class Bootstrap implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
         /*
         roleRepository.deleteAll();
         Role admin = new Role();
-        admin.setName("ROLE_ADMIN");
+        admin.setName("ADMIN");
         Role user = new Role();
-        user.setName("ROLE_USER");
+        user.setName("USER");
 
         roleRepository.saveAll(List.of(admin, user));
-        
+
          */
+        
+
     }
 }
