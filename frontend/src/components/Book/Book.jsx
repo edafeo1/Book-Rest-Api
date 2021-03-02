@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import {connect} from 'react-redux';
-import BookService from '../Services/Book/bookAction';
+import BookActions from '../Services/Book/bookAction';
 
 import {Card, Form, Button, Col, InputGroup, Image} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -35,7 +35,7 @@ class Book extends Component {
     }
 /*
     findAllLanguages = () => {
-        let boookLanguages = BookService.fetchLanguages();
+        let boookLanguages = BookActions.fetchLanguages();
         setTimeout(() => {
             //let bookLanguages = this.props.bookObject.languages;
             if(bookLanguages) {
@@ -51,7 +51,7 @@ class Book extends Component {
     };
 
     findAllGenres = () => {
-        let bookGenres = BookService.fetchGenres();
+        let bookGenres = BookActions.fetchGenres();
         setTimeout(() => {
             //let bookGenres = this.props.bookObject.genres;
             if(bookGenres) {
@@ -67,7 +67,7 @@ class Book extends Component {
     */
 
     findBookById = (bookId) => {
-        book =  BookService.GetBookById(bookId);
+        book =  BookActions.GetBookById(bookId);
         setTimeout(() => {
             //let book = this.props.bookObject.book;
             if(book != null) {
@@ -102,9 +102,9 @@ class Book extends Component {
             genre: this.state.genre
         };
 
-        BookService.SaveBook(book);
+        BookActions.SaveBook(book);
         setTimeout(() => {
-            if(BookService.SaveBook(book).payload != null) {
+            if(BookActions.SaveBook(book).payload != null) {
                 this.setState({"show":true, "method":"post"});
                 setTimeout(() => this.setState({"show":false}), 3000);
             } else {
@@ -127,9 +127,9 @@ class Book extends Component {
             language: this.state.language,
             genre: this.state.genre
         };
-        BookService.UpdateBookById(this.state.id, book);
+        BookActions.UpdateBookById(this.state.id, book);
         setTimeout(() => {
-            if(BookService.UpdateBookById(this.state.id, book).payload != null) {
+            if(BookActions.UpdateBookById(this.state.id, book).payload != null) {
                 this.setState({"show":true, "method":"put"});
                 setTimeout(() => this.setState({"show":false}), 3000);
             } else {
@@ -148,6 +148,8 @@ class Book extends Component {
     bookList = () => {
         return this.props.history.push("/list");
     };
+
+        
 
     render() {
         const {title, author, coverPhotoURL, isbnNumber, price, language, genre} = this.state;

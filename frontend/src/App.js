@@ -24,7 +24,13 @@ export default function App() {
                 <Col lg={12} className={"margin-top"}>
                     <Switch>
                         <Route path="/" exact component={() => <Welcome heading={heading} quote={quote} footer={footer}/>}/>
-                        
+                        <Route path="/add" exact component={Book}/>
+                        <Route path="/edit/:id" exact component={Book}/>
+                        <Route path="/list" exact component={BookList}/>
+                        <Route path="/users" exact component={UserList}/>
+                        <Route path="/register" exact component={Register}/>
+                        <Route path="/login" exact component={Login}/>
+                        <Route path="/logout" exact component={Login}/>
                     </Switch>
                 </Col>
             </Row>
